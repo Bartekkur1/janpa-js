@@ -11,9 +11,7 @@ export class Container implements ControllerRegister, ServiceRegister {
 
     static get getInstance() {
         if (!this.instance) {
-            console.log("<- Creating container instance...");
             this.instance = new Container();
-            console.log("-> Container instance created");
         }
 
         return this.instance;
@@ -24,7 +22,6 @@ export class Container implements ControllerRegister, ServiceRegister {
     }
 
     public registerService<T>(obj: Constructor<T>, name?: string): void {
-        console.log(`Registering service ${obj.name}...`);
         let cell: ContainerCell<T> = {
             instance: new obj(obj.name),
             name: name || obj.name
@@ -32,9 +29,6 @@ export class Container implements ControllerRegister, ServiceRegister {
 
         if (this.findService(cell.name) === null) {
             this.ContainerCells.push(cell);
-            console.log(`- Successfully registered ${cell.name} service`);
-        } else {
-            console.log(`- Failed to register ${cell.name}, service already exists`);
         }
     }
 
