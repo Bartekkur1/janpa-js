@@ -1,0 +1,30 @@
+{
+  "name": "janpa-js",
+  "version": "0.0.1",
+  "description": "janpa-ts is a framework built around express.js that helps build a clean code rest api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bartekkur1/janpa-js.git"
+  },
+  "keywords": [
+    "janpa",
+    "express",
+    "janpa-js"
+  ],
+  "author": "Bartek Kurpanik <bartekkur1@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bartekkur1/janpa-js/issues"
+  },
+  "homepage": "https://github.com/bartekkur1/janpa-js#readme",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^3.9.5"
+  }
+}
