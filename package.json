@@ -1,6 +1,6 @@
 {
   "name": "janpa-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "janpa-ts is a framework built around express.js that helps build a clean code rest api",
   "main": "index.js",
   "scripts": {
