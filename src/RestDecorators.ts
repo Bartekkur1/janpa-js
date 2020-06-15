@@ -4,6 +4,13 @@ import { JanpaPath } from './model/JanpaPath';
 import { HttpMethod } from './enum/HttpMethod';
 import { RequestHandler } from 'express';
 
+export function Middleware(pathName: string) {
+    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+        let router = Container.getInstance.getServiceInstance(JanpaRouter);
+        router.addRoute(xpressPathCreator("Middleware", pathName, descriptor.value));
+    }
+}
+
 export function Get(pathName: string) {
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
         let router = Container.getInstance.getServiceInstance(JanpaRouter);
@@ -32,7 +39,7 @@ export function Delete(pathName: string) {
     }
 }
 
-function xpressPathCreator(httpMethod: HttpMethod, pathName: string, method: RequestHandler) {
+function xpressPathCreator(httpMethod: HttpMethod | "Middleware", pathName: string, method: RequestHandler) {
     return <JanpaPath>{
         method: httpMethod,
         name: pathName,

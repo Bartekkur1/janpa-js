@@ -11,6 +11,9 @@ export class JanpaRouter {
     }
 
     public registerRoutes(app: Express) {
+        this.routes.filter(r => r.method === "Middleware").forEach(r => {
+            app.user(r.name, r.action);
+        });
         this.routes.filter(r => r.method === HttpMethod.GET).forEach(r => {
             app.get(r.name, r.action);
         });

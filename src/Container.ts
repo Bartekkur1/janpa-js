@@ -1,10 +1,9 @@
 import "reflect-metadata";
 import { ContainerCell } from "./model/ContainerCell";
 import { Constructor } from "./model/Constructor";
-import { ControllerRegister } from "./model/ControllerRegister";
-import { ServiceRegister } from "./model/ServiceRegister";
+import { LogicRegister } from "./model/LogicRegister";
 
-export class Container implements ControllerRegister, ServiceRegister {
+export class Container implements LogicRegister {
 
     private static instance: Container;
     private ContainerCells: ContainerCell<any>[] = [];
@@ -15,6 +14,10 @@ export class Container implements ControllerRegister, ServiceRegister {
         }
 
         return this.instance;
+    }
+
+    public registerMiddleware<T extends Object>(obj: Constructor<T>, name?: string): void {
+        this.registerService(obj, name);
     }
 
     public registerController<T>(obj: Constructor<T>, name?: string): void {

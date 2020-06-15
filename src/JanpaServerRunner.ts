@@ -1,8 +1,7 @@
 import { JanpaServer } from "./JanpaServer";
 import { ExpressBase } from "./model/ExpressBase";
 import { Constructor } from "./model/Constructor";
-import { ServiceRegister } from "./model/ServiceRegister";
-import { ControllerRegister } from "./model/ControllerRegister";
+import { ServiceRegister, ControllerRegister, MiddlewareRegister } from "./model/LogicRegister";
 
 export class JanpaServerRunner {
     private server: JanpaServer;
@@ -38,6 +37,11 @@ export class JanpaServerRunner {
     }
 
     public registerController(callback: (c: ControllerRegister) => any) {
+        this.server.registerServices(callback);
+        return this;
+    }
+
+    public registerMiddleware(callback: (c: MiddlewareRegister) => any) {
         this.server.registerServices(callback);
         return this;
     }
